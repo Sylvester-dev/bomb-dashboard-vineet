@@ -24,14 +24,6 @@ import {getDisplayBalance} from '../../../utils/formatBalance';
 const BombFarms: React.FC<any> = () => {
   const bombStats = useBombStats();
   const tShareStats = useShareStats();
-
-  
-  
-
-
-
-
-
   const bombBtcb = useBank('BombBtcbLPBShareRewardPool');
   const bombBtcbstatsOnPool = useStatsForPool(bombBtcb);
   const bombBtcbstakedBalance = useStakedBalance(bombBtcb.contract, bombBtcb.poolId);
@@ -134,7 +126,7 @@ const BombFarms: React.FC<any> = () => {
                   Recommended
                 </span>
                 <span style={{ float: 'right' }}>
-                  TVL : <strong>${bombbtcb.tvl}</strong>
+                  TVL :{' '} <strong>${bombbtcb.tvl}</strong>
                 </span>
               </h3>
               <hr style={{ border: '0.5px solid rgba(195, 197, 203, 0.75)' }} />
@@ -142,7 +134,7 @@ const BombFarms: React.FC<any> = () => {
             <Grid container spacing={4} style={{ textAlign: 'center' }}>
               <Grid item xs={2} style={{ padding: '0' }}>
                 Daily returns:
-                <h2 style={{ color: 'white', marginTop: '20px', fontSize: '2rem' }}>{bombbtcb.returns}%</h2>
+                <h1 style={{ color: 'white', marginTop: '20px', fontSize: '2rem' }}>{bombbtcb.returns}%</h1>
               </Grid>
               <Grid item xs={2} style={{ padding: '0', textAlign: 'left' }}>
                 Your Stake:
@@ -162,19 +154,33 @@ const BombFarms: React.FC<any> = () => {
               </Grid>
               <Grid item xs={6} style={{ padding: '0' }}>
                 <Box style={{ textAlign: 'center', marginTop: '60px' }}>
-                  <Button disabled={bombbtcb.approve}
+                  <StyledButton disabled={bombbtcb.approve}
                    onClick={() => {
                     bombbtcb.deposit();
                    }} style={{ width: '25%', border: 'solid 2px', borderRadius: '20px', marginRight: '10px' }}>
-                    Deposit <ArrowUpwardSharp />
-                  </Button>
-                  <Button  disabled={Number(bombbtcb.yourstake) === 0 || (!canWithdraw && !canClaimReward)}
+                     <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+                    <div>
+                     Deposit 
+                    </div>
+                    <div>
+                    <ArrowUpwardSharp />
+                    </div>
+                  </div>
+                  </StyledButton>
+                  <StyledButton  disabled={Number(bombbtcb.yourstake) === 0 || (!canWithdraw && !canClaimReward)}
                    onClick={() => {
                     bombbtcb.withdraw();
                    }} style={{ width: '25%', border: 'solid 2px', borderRadius: '20px', marginRight: '10px' }}>
-                    Withdraw <ArrowDownwardSharp />
-                  </Button>
-                  <Button 
+                    <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+                    <div>
+                     Withdraw 
+                    </div>
+                    <div>
+                    <ArrowDownwardSharp />
+                    </div>
+                  </div>
+                  </StyledButton>
+                  <StyledButton 
                    onClick={() => {
                     bombbtcb.claimrewards();
                   }}
@@ -185,9 +191,15 @@ const BombFarms: React.FC<any> = () => {
                       borderRadius: '20px',
                     }}
                   >
-                    Claim Rewards
-                    <img alt="b share" style={{ width: '15px', marginLeft: '5px' }} src={BShareImage} />
-                  </Button>
+                    <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+                    <div>
+                     Claim Rewards 
+                    </div>
+                    <div>
+                      <img alt="b share" style={{ width: '15px', marginLeft: '5px' }}  src={BShareImage} />
+                    </div>
+                  </div>
+                  </StyledButton>
                 </Box>
               </Grid>
             </Grid>
@@ -223,7 +235,7 @@ const BombFarms: React.FC<any> = () => {
             <Grid container spacing={4} style={{ textAlign: 'center' }}>
               <Grid item xs={2} style={{ padding: '0' }}>
                 Daily returns:
-                <h2 style={{ color: 'white', marginTop: '20px', fontSize: '2rem' }}>{bsharebnb.returns}%</h2>
+                <h1 style={{ color: 'white', marginTop: '20px', fontSize: '2rem' }}>{bsharebnb.returns}%</h1>
               </Grid>
               <Grid item xs={2} style={{ padding: '0', textAlign: 'left' }}>
                 Your Stake:
@@ -247,15 +259,29 @@ const BombFarms: React.FC<any> = () => {
             onClick={() => {
               bsharebnb.deposit();
             }} style={{ width: '25%', border: 'solid 2px', borderRadius: '20px', marginRight: '10px' }}>
-                    Deposit <ArrowUpwardSharp />
+                    <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+                    <div>
+                     Deposit 
+                    </div>
+                    <div>
+                    <ArrowUpwardSharp />
+                    </div>
+                  </div>
                   </StyledButton>
                   <StyledButton disabled={Number(bsharebnb.yourstake) === 0 || (!canWithdraw && !canClaimReward)}
             onClick={() => {
               bsharebnb.withdraw();
             }} style={{ width: '25%', border: 'solid 2px', borderRadius: '20px', marginRight: '10px' }}>
-                    Withdraw <ArrowDownwardSharp />
+                   <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+                    <div>
+                     Withdraw 
+                    </div>
+                    <div>
+                    <ArrowDownwardSharp />
+                    </div>
+                  </div>
                   </StyledButton>
-                  <Button disabled={Number(bsharebnb.earned) === 0 || !canClaimReward}
+                  <StyledButton disabled={Number(bsharebnb.earned) === 0 || !canClaimReward}
             onClick={() => {
               bsharebnb.claimrewards();
             }}
@@ -265,9 +291,15 @@ const BombFarms: React.FC<any> = () => {
                       borderRadius: '20px',
                     }}
                   >
-                    Claim Rewards
-                    <img alt="b share" style={{ width: '15px', marginLeft: '5px' }} src={BShareImage} />
-                  </Button>
+                  <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row'}}>
+                    <div>
+                     Claim Rewards 
+                    </div>
+                    <div>
+                      <img alt="b share" style={{ width: '15px', marginLeft: '5px' }}  src={BShareImage} />
+                    </div>
+                  </div>
+                  </StyledButton>
                 </Box>
               </Grid>
             </Grid>
@@ -279,26 +311,32 @@ const BombFarms: React.FC<any> = () => {
 };
 
 const Styleddiv = styled.div`
-  margin:10px;
-  background:#23284bbf;
-  border:  1px solid #728cdf;
+  margin: 10px;
+  background: #23284bbf;
+  border: 1px solid #728cdf;
   border-radius: 10px;
   padding: 10px;
   h1{
+    text-transform:none;
     color:white;
-    font-size:1.25rem;
+    font-size: 1.25rem;
   }
-`
-const StyledButton = styled(Button)` && {
+`;
+
+const StyledButton = styled.button`
   background: transparent;
-  border: 1px solid currentColor;
+ 
+  border: 2px solid currentColor;
   color: ${(p) => (p.disabled ? '#FFFFFF80' : '#FFFFFF')};
+  border-radius: 20px;
+  margin-right: 10px;
+  padding: 5px;
+  margin: 0 auto;
   cursor:${p=>p.disabled?'not-allowed':'pointer'};
   &:hover{
     background-color: ${p=>p.disabled?'transparent':'#FFFFFF'};
     color:${p=>p.disabled?'#FFFFFF80':'black'};
   }
-}
 `;
 
 export default BombFarms;

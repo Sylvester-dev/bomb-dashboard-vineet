@@ -8409,6 +8409,7 @@ __metadata:
     react-helmet: ^6.1.0
     react-icons: ^4.3.1
     react-loading-skeleton: ^2.1.1
+    react-minimal-pie-chart: ^8.3.0
     react-modal-video: ^1.2.8
     react-redux: ^7.2.1
     react-router-dom: ^5.2.0
@@ -23801,6 +23802,16 @@ __metadata:
   peerDependencies:
     react: ^15.6.1 || ^16.0.0 || ^17.0.0
   checksum: 9e697d28033dfe871e54e69fdcde9c62a1255c165338b5723d71afad4802ba558c2db2479c98684c28f9e39c1658fdd11be363cfb50b74d28b6a1aab5581d4f2
+  languageName: node
+  linkType: hard
+
+"react-minimal-pie-chart@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "react-minimal-pie-chart@npm:8.3.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18
+    react-dom: ^16.8.0 || ^17.0.0 || ^18
+  checksum: 3c5a1c444300dc838b28906818942207ee5f0f221d4e87b832291ab2ae84cfe1cb364a98204dfbee604141592149e1f9baa728f5b22cf6a1e8e45967dfca0b73
   languageName: node
   linkType: hard
 

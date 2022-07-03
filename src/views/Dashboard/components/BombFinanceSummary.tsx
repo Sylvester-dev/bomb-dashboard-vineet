@@ -20,13 +20,16 @@ import RingImage from '../../../assets/img/ring.svg';
 import { Box, Button, Card, CardContent, Grid, Paper, Typography } from '@material-ui/core';
 
 const BombFinanceSummary: React.FC<any> = ({ bombFinance, details }) => {
-  // const BOMB=getDisplayBalance(useTokenBalance(bombFinance.BOMB));
-  // const BSHARE=getDisplayBalance(useTokenBalance(bombFinance.BSHARE));
-  // const BBOND=getDisplayBalance(useTokenBalance(bombFinance.BBOND));
-  // const BOMB_BTCB=getDisplayBalance(useTokenBalance(bombFinance.externalTokens['BOMB-BTCB-LP']));
-  // const BSHARE_BNB=getDisplayBalance(useTokenBalance(bombFinance.externalTokens['BSHARE-BNB-LP']));
+
+  // Getting balance of different tokens
+  const BOMB=getDisplayBalance(useTokenBalance(bombFinance.BOMB));
+  const BSHARE=getDisplayBalance(useTokenBalance(bombFinance.BSHARE));
+  const BBOND=getDisplayBalance(useTokenBalance(bombFinance.BBOND));
+  const BOMB_BTCB=getDisplayBalance(useTokenBalance(bombFinance.externalTokens['BOMB-BTCB-LP']));
+  const BSHARE_BNB=getDisplayBalance(useTokenBalance(bombFinance.externalTokens['BSHARE-BNB-LP']));
   const currentEpoch = useCurrentEpoch();
   const { to } = useTreasuryAllocationTimes();
+  //Tokens details
   const { bomb, bshare, bbond } = details;
   const cashStat = useCashPriceInEstimatedTWAP();
   const livetwap = useMemo(() => (cashStat ? Number(cashStat.priceInDollars).toFixed(4) : null), [cashStat]);
@@ -69,10 +72,10 @@ const BombFinanceSummary: React.FC<any> = ({ bombFinance, details }) => {
                   </Grid>
 
                   <Grid item xs={2}>
-                    {roundAndFormatNumber(bomb.currentSupply, 2)}
+                    {roundAndFormatNumber(bomb.currentSupply/1000000, 2)}M
                   </Grid>
                   <Grid item xs={2}>
-                    {roundAndFormatNumber(bomb.totalSupply, 2)}
+                    {roundAndFormatNumber(bomb.totalSupply/1000, 2)}k
                   </Grid>
                   <Grid item xs={5}>
                     <p style={{ padding: '0', margin: '0' }}>
@@ -101,10 +104,10 @@ const BombFinanceSummary: React.FC<any> = ({ bombFinance, details }) => {
                   </Grid>
 
                   <Grid item xs={2}>
-                    {roundAndFormatNumber(bshare.currentSupply, 2)}
+                    {roundAndFormatNumber(bshare.currentSupply/1000, 2)}K
                   </Grid>
                   <Grid item xs={2}>
-                    {roundAndFormatNumber(bshare.totalSupply, 2)}
+                    {roundAndFormatNumber(bshare.totalSupply/1000, 2)}m
                   </Grid>
                   <Grid item xs={5}>
                     <p style={{ padding: '0', margin: '0' }}>
@@ -132,10 +135,10 @@ const BombFinanceSummary: React.FC<any> = ({ bombFinance, details }) => {
                     $ BBOND
                   </Grid>
                   <Grid item xs={2}>
-                    {roundAndFormatNumber(bbond.currentSupply, 2)}
+                    {roundAndFormatNumber(bbond.currentSupply/1000, 2)}K
                   </Grid>
                   <Grid item xs={2}>
-                    {roundAndFormatNumber(bbond.totalSupply, 2)}
+                    {roundAndFormatNumber(bbond.totalSupply/1000, 2)}k
                   </Grid>
                   <Grid item xs={5}>
                     <p style={{ padding: '0', margin: '0' }}>
@@ -204,23 +207,23 @@ const BombFinanceSummary: React.FC<any> = ({ bombFinance, details }) => {
                 <Grid container spacing={3}>
                   <Grid item xs={6}>
                     <p style={{ fontSize: '0.9rem' }}>
-                      <img alt="bomb" style={{ width: '15px' }} src={BombImage} /> Bomb: <strong>17%</strong>
+                      <img alt="bomb" style={{ width: '15px' }} src={BombImage} /> Bomb: <strong>{roundAndFormatNumber(Number(BOMB),2)}%</strong>
                     </p>
                     <p style={{ fontSize: '0.9rem' }}>
-                      <img alt="b share" style={{ width: '15px' }} src={BShareImage} /> BShare: <strong>17%</strong>
+                      <img alt="b share" style={{ width: '15px' }} src={BShareImage} /> BShare: <strong>{roundAndFormatNumber(Number(BSHARE),2)}%</strong>
                     </p>
                     <p style={{ fontSize: '0.9rem' }}>
-                      <img alt="b bond" style={{ width: '15px' }} src={Bbond} /> BBond: <strong>17%</strong>
+                      <img alt="b bond" style={{ width: '15px' }} src={Bbond} /> BBond: <strong>{roundAndFormatNumber(Number(BBOND),2)}%</strong>
                     </p>
                   </Grid>
                   <Grid item xs={6}>
                     <p style={{ fontSize: '0.9rem' }}>
                       <img alt="bomb btcb" style={{ width: '15px' }} src={BombBTCBImage} /> Bomb-BTCB:{' '}
-                      <strong>17%</strong>
+                      <strong>{roundAndFormatNumber(Number(BOMB_BTCB),2)}%</strong>
                     </p>
                     <p style={{ fontSize: '0.9rem' }}>
                       <img alt="bshare bnb" style={{ width: '15px' }} src={BShareBNBImage} /> BShare-BNB:{' '}
-                      <strong>15%</strong>
+                      <strong>{roundAndFormatNumber(Number(BSHARE_BNB),2)}%</strong>
                     </p>
                     <p style={{ fontSize: '0.9rem' }}>
                       <div

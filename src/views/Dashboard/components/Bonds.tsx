@@ -1,7 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import styled from 'styled-components';
 import ExchangeModal from '../../Bond/components/ExchangeModal';
-
 import useBondStats from '../../../hooks/useBondStats';
 import useTokenBalance from '../../../hooks/useTokenBalance';
 import useBombFinance from '../../../hooks/useBombFinance';
@@ -12,10 +11,8 @@ import { ArrowUpwardSharp, ArrowDownwardSharp, ShoppingCart } from '@material-ui
 import { Box, Button, Card, CardContent, Grid, Paper, Typography } from '@material-ui/core';
 import Bbond from '../../../assets/img/bbond-512.png';
 import { useTransactionAdder } from '../../../state/transactions/hooks';
-
 import { getDisplayBalance } from '../../../utils/formatBalance';
 import TokenSymbol from '../../../components/TokenSymbol';
-
 import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../../bomb-finance/constants';
 
 const Bonds: React.FC<any> = () => {
@@ -103,6 +100,8 @@ const Bonds: React.FC<any> = () => {
                   {getDisplayBalance(bondsPurchasable)}
                 </h3>
               </Grid>
+
+           {/* Purchase and Redeem Section */}
               <Grid item xs={6} style={{ paddingRight: '20px' }}>
                 <Box style={{ padding: '10px', textAlign: 'left' }}>
                   <p style={{ color: 'white' }}>
@@ -158,6 +157,7 @@ const Bonds: React.FC<any> = () => {
   );
 };
 
+//Styled CSS
 const Styleddiv = styled.div`
   margin: 10px;
   background: #23284bbf;

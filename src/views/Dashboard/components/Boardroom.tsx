@@ -15,8 +15,8 @@ import useBombStats from '../../../hooks/useBombStats';
 import useWithdrawCheck from '../../../hooks/boardroom/useWithdrawCheck';
 import useClaimRewardCheck from '../../../hooks/boardroom/useClaimRewardCheck';
 import { roundAndFormatNumber } from '../../../0x';
-import { BiBook } from 'react-icons/bi';
 import DiscordIcon from '../../../assets/img/discord.svg';
+import DocIcon from '../../../assets/img/document.svg';
 import BombImage from '../../../assets/img/bomb.png';
 import BShareImage from '../../../assets/img/bshare-512.png';
 import BombBTCBImage from '../../../assets/img/bomb-bitcoin-LP.png';
@@ -50,6 +50,7 @@ const Boardroom: React.FC<any> = () => {
 
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(earning))).toFixed(2);
 
+  //All values and functions needed for boardroom bshare token
   const values = {
     heading: 'Boardroom',
     icon: 'BSHARE',
@@ -74,6 +75,7 @@ const Boardroom: React.FC<any> = () => {
     'https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
   return (
     <>
+  {/* Boardroom investment, discord and doc section */}
       <Grid container spacing={3} style={{ padding: '20px 8% 40px 8%' }}>
         <Grid item xs={12} sm={8} style={{ marginBottom: '20px' }}>
           <Box p={2} style={{ textAlign: 'center' }}>
@@ -111,7 +113,7 @@ const Boardroom: React.FC<any> = () => {
               href="https://docs.bomb.money/welcome-start-here/readme"
               style={{ color: 'black', background: 'rgba(255, 255, 255, 0.5)', width: '45%' }}
             >
-              <BiBook style={{ fontSize: '1.5rem', marginRight: '5px' }} />
+              <img alt="doc icon" style={{ width: '20px', marginRight: '5px' }} src={DocIcon} />
               <strong>Read Docs</strong>
             </Button>
           </Box>
@@ -141,7 +143,7 @@ const Boardroom: React.FC<any> = () => {
                     TVL: <strong>$ {values.tvl}</strong>
                   </span>
                 </p>
-
+  {/* Boardroom bshare details and deposit section */}
                 <hr style={{ border: '0.5px solid rgba(195, 197, 203, 0.75)' }} />
                 <p style={{ float: 'right' }}>
                   Total Staked:
@@ -248,6 +250,8 @@ const Boardroom: React.FC<any> = () => {
             </Paper>
           </Styleddiv>
         </Grid>
+
+{/* Latest NEWS SECTION */}
 
         <Grid item xs={12} sm={4} style={{ marginBottom: '20px' }}>
           <Paper style={{ background: 'rgba(32, 37, 67, 0.5)', height: '420px', borderRadius: '5px' }}>

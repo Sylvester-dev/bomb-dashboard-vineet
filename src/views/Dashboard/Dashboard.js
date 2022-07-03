@@ -63,6 +63,7 @@ const Dashboard = () => {
   );
   const bBondTotalSupply = useMemo(() => (bBondStats ? String(bBondStats.totalSupply) : null), [bBondStats]);
 
+  // Required details on all tokens
   const details = {
     bomb: {
       currentSupply: bombCirculatingSupply,
@@ -88,6 +89,9 @@ const Dashboard = () => {
         <Helmet>
           <title>{TITLE}</title>
         </Helmet>
+
+        {/* If account is not connected then show Unlockwallet else show dashboard */}
+
         {!!account ? (
           <div>
             <BombFinanceSummary details={details} bombFinance={bombFinance} />

@@ -52,6 +52,7 @@ const BombFarms: React.FC<any> = () => {
   );
   const bshareBnbearnedInDollars = (Number(bSharebnbPriceInDollars) * Number(getDisplayBalance(bshareBnbearnings))).toFixed(2);
   
+  // Details of bombBtcb and bshareBnb token for farm
   const bombbtcb = {
     heading:'BOMB-BTCB',
     bg:false,
@@ -310,6 +311,7 @@ const BombFarms: React.FC<any> = () => {
   );
 };
 
+// Styled CSS
 const Styleddiv = styled.div`
   margin: 10px;
   background: #23284bbf;
@@ -325,7 +327,6 @@ const Styleddiv = styled.div`
 
 const StyledButton = styled.button`
   background: transparent;
- 
   border: 2px solid currentColor;
   color: ${(p) => (p.disabled ? '#FFFFFF80' : '#FFFFFF')};
   border-radius: 20px;
